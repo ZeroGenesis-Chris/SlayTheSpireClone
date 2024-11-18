@@ -2,6 +2,7 @@
 Python Slay the Spire clone base template
 
 1. Cards/: 
+
 This directory will hold all the classes related to cards.
 card.py: The base class for all cards, containing properties common to all types of cards like name, cost, etc.
 attack_card.py, skill_card.py, power_card.py: Derived classes for specific types of cards that implement different effects.
