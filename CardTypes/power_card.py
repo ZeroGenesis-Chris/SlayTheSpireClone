@@ -1,4 +1,4 @@
-from cards import Card
+from Deck.cards import Card
 
 class PowerCard(Card):
     def __init__(self, name, effect, cost=1):
