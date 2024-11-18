@@ -9,12 +9,13 @@ class Player:
         self.block = 0
         self.energy = 3  # Starting energy per turn
         self.max_energy = 3
-
+ 
         # Initialize the deck
         self.deck = DeckManager.create_starter_deck()
         self.hand = []
         self.draw_pile = self.deck.cards
         self.discard_pile = []
+   
 
     def take_damage(self, amount):
         """Reduces incoming damage by block, then reduce HP"""
@@ -57,3 +58,32 @@ class Player:
         self.discard_pile.extend(self.hand)
         self.hand.clear()
         self.draw_cards()
+
+class EnhancedPlayer(Player):
+    def __init__(self, name="The Wanderer", maxHealth=80):
+        super().__init__(name, maxHealth)
+        self.strength = 0
+        self.powers = [] # Track Active power effects
+
+    def apply_strength(self, attack_damage):
+        """Apply strength buff to attack damage"""
+        return attack_damage + self.strength
+
+    def add_power(self, power):
+        """Add a power effect to the player"""
+        self.powers.append(power)
+
+    def reset_turn(self):
+        """Reset turn and manage power durations"""
+        super().reset_turn()
+
+        # Decrement and remove expired powers
+        self.powers = [
+            power for power in self.powers
+            if power.duration > 0
+        ]
+
+        # Decrement power durations
+        for power in self.powers:
+            if power.duration != float("inf"):
+                power.duration -= 1

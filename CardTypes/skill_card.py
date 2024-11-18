@@ -1,29 +1,27 @@
-from Deck.cards import Card
+from Deck.cards import CardType
 
-class SkillCard(Card):
-    def __init__(self, name, effect, cost = 1):
-        #Call the parent constructor (Card Class)
-        super().__init__(name, card_type="Skill", cost=cost, effect=effect)
+class SkillCard:
+    def __init__(self, name, cost, description=""):
+        super().__init__(name, CardType.SKILL, cost, description)
 
-    def use(self, player, enemy):
-        """
-        Use the skill card, triggering its effect.
-        """
+class DefendCard(SkillCard):
+    def __init__(self, name="Defend", cost=1, block_amount=5, description="Gain block"):
+        super().__init__(name, cost, description)
+        self.block_amount = block_amount
 
-    def block_effect(self, player):
-        """
-        Defines the effect of the block card.
-        This will block the enemy's attack.
-        """
-    
-    def gain_energy(self, player):
-        """
-        Gain energy from the skill card.
-        """
-        
+    def play(self, player, target=None):
+        """Add block to the player"""
+        player.gain_block(self.block_amount)
+        return f"{self.name} grants {self.block_amount} block"
 
-    def __str__(self):
-        """
-        String representation of the SkillCard for easy display.
-        """
-        return f"{self.name} (Cost: {self.cost} Energy)"
+class EvasionCard(SkillCard):
+    def __init__(self, name="Dodge", cost=1, block_amount=3, draw_cards=1, description="Gain block and draw cards"):
+        super().__init__(name, cost, description)
+        self.block_amount = block_amount
+        self.draw_cards = draw_cards
+
+    def play(self, player, target=None):
+        """Add block and draw cards"""
+        player.gain_block(self.block_amount)
+        drawn = player.draw_cards(self.draw_cards)
+        return f"{self.name} grants {self.block_amount} block and draws {len(drawn)} cards"

@@ -55,3 +55,34 @@ class Enemy:
         """Checks if the enemy is defeated"""
         return self.currentHealth <= 0
         
+class EnhancedEnemy(Enemy):
+    def __init__(self, name, maxHealth, intent=None):
+        super().__init__(name, maxHealth, intent)
+        self.vulnerable = 0
+        self.powers = []
+
+    def take_damage(self, damage):
+        """Modified damage calculation to account for vulnerability"""
+        if self.vulnerable > 0:
+            # increase damage by 50% if vulnerable
+            amount = int(amount * 1.5)
+            self.vulnerable = max(0, self.vulnerable - 1)
+            
+        return super().take_damage(damage)
+    
+    def add_power(self, power):
+        """Add a power effect to the enemy"""
+        self.powers.append(power)
+
+    def reset_turn(self):
+        """Reset turn and manage power durations"""
+        # Decrement and remove expired powers
+        self.powers = [
+            power for power in self.powers
+            if power.duration > 0
+        ]
+
+        # Decrement power durations
+        for power in self.powers:
+            if power.duration != float("inf"):
+                power.duration -= 1
