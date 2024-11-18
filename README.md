@@ -33,38 +33,38 @@ The main entry point of the game. This is where the game is initialized, the mai
 
 
 
-
-
-## Directory Structure
-slay_the_spire_clone/
-│
-├── assets/                 # Optional: Folder for storing any images, sound files, etc.
-│
-├── cards/                  # Contains classes related to cards (Card, AttackCards, etc.)
-│   ├── __init__.py
-│   ├── card.py
-│   ├── attack_card.py
-│   ├── skill_card.py
-│   └── power_card.py
-│
-├── characters/             # Contains classes related to characters (Player, Enemy, etc.)
-│   ├── __init__.py
-│   ├── player.py
-│   └── enemy.py
-│
-├── deck/                   # Contains deck-related functionality
-│   ├── __init__.py
-│   ├── deck.py
-│   └── deck_manager.py     # Manages card drawing, shuffling, etc.
-│
-├── game/                   # Core game loop and game state management
-│   ├── __init__.py
-│   ├── game.py
-│   ├── game_loop.py
-│   └── event_manager.py    # Handle random events, choices, etc.
-│
-├── utils/                  # Miscellaneous utility functions
-│   ├── __init__.py
-│   ├── game_utils.py       # Helpers like checking if game is over, etc.
-│
-└── main.py                 # Main entry point for the game
+      
+      
+      ## Directory Structure
+      slay_the_spire_clone/
+      │
+      ├── assets/                 # Optional: Folder for storing any images, sound files, etc.
+      │
+      ├── cards/                  # Contains classes related to cards (Card, AttackCards, etc.)
+      │   ├── __init__.py
+      │   ├── card.py
+      │   ├── attack_card.py
+      │   ├── skill_card.py
+      │   └── power_card.py
+      │
+      ├── characters/             # Contains classes related to characters (Player, Enemy, etc.)
+      │   ├── __init__.py
+      │   ├── player.py
+      │   └── enemy.py
+      │
+      ├── deck/                   # Contains deck-related functionality
+      │   ├── __init__.py
+      │   ├── deck.py
+      │   └── deck_manager.py     # Manages card drawing, shuffling, etc.
+      │
+      ├── game/                   # Core game loop and game state management
+      │   ├── __init__.py
+      │   ├── game.py
+      │   ├── game_loop.py
+      │   └── event_manager.py    # Handle random events, choices, etc.
+      │
+      ├── utils/                  # Miscellaneous utility functions
+      │   ├── __init__.py
+      │   ├── game_utils.py       # Helpers like checking if game is over, etc.
+      │
+      └── main.py                 # Main entry point for the game
